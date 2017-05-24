@@ -1,0 +1,18 @@
+登陆oracle：
+sqlplus / as sysdba
+
+更改表空间状态:
+开启：alter tablespace tablespace_name online;
+关闭：alter tablespace tablespace_name offline;
+
+删除表空间:
+drop tablespace tablespace_name including contents and datafiles;
+
+创建表空间:
+create tablespace jycard datafile 'd:/app/jycard.dbf' size 1100M;
+
+创建用户，指定默认表空间和临时表空间:
+create user username identified by userpwd default tablespace users temporary tablespace temp;
+
+导入数据表:
+impdp jycard/jycard dumpfile=20170205011001.dmp logfile=jycard.log directory=jycard1

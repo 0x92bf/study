@@ -1,0 +1,6 @@
+============纯静态加载动态js文件================
+<script>
+    var number = Math.random()*1000;
+    var str = "<script type='text/javascript' src='js/change.js?ver="+number+"'/>";
+    document.write(str);
+</script>

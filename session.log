@@ -1,0 +1,9 @@
+
+设置多目录存放session;为解决(据说一个文件夹内大于2000文件读写速度降低)
+===========步骤一=====================================
+
+windows:session.save_path="2;D:\phpStudy\tmp\tmp"    linux:session.save_path="2;MODE(600);D:\phpStudy\tmp\tmp"
+
+session目录下创建对应的目录
+
+===========end=================================

@@ -1,0 +1,104 @@
+查看恶意ip试图登陆次数:
+lastb | awk '{print $3}' | sort | uniq -c | sort -n
+
+查看磁盘空间:
+df -h
+
+查看当前文件夹内所有文件所占空间(深度1):
+du -h --max-depth=1
+
+打包:
+tar -cvf dirname.tar ./dirname
+
+解压:
+tar -xvf ./dirname.tar
+
+打印当前目录:
+pwd
+
+查找当前目录大文件:
+find . -type f -size +100M
+
+显示文件大小:find . type f -size +50M -print0 | xargs -0 du -h
+
+改变文件权限:
+chomd 777 filename
+
+==============composer================
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+中文镜像:composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+
+============path==================
+查看：echo $PATH
+vim /etc/profile
+source /etc/profile
+
+============开放端口=================
+cd /etc/sysconfig
+vi iptables
+service iptables restart
+
+查看linux cpu
+cat /proc/cpuinfo
+cat /proc/cpuinfo |grep "model name" && cat /proc/cpuinfo |grep "physical id"
+
+查看linux memory
+cat /proc/meminfo | grep MemTotal
+
+计算httpd占用内存的平均数:
+ps aux|grep -v grep|awk '/httpd/{sum+=$6;n++};END{print sum/n}'
+
+实时检测HTTPD连接数：
+watch -n 1 -d "pgrep httpd|wc -l"
+
+===============top参数详解========================
+第一行：
+10:01:23 — 当前系统时间
+126 days, 14:29 — 系统已经运行了126天14小时29分钟（在这期间没有重启过）
+2 users — 当前有2个用户登录系统
+load average: 1.15, 1.42, 1.44 — load average后面的三个数分别是1分钟、5分钟、15分钟的负载情况
+
+
+第二行：
+Tasks — 任务（进程），系统现在共有183个进程，其中处于运行中的有1个，182个在休眠（sleep），
+stoped状态的有0个，zombie状态（僵尸）的有0个。
+
+第三行：cpu状态
+6.7% us — 用户空间占用CPU的百分比。
+0.4% sy — 内核空间占用CPU的百分比。
+0.0% ni — 改变过优先级的进程占用CPU的百分比
+92.9% id — 空闲CPU百分比
+0.0% wa — IO等待占用CPU的百分比
+0.0% hi — 硬中断（Hardware IRQ）占用CPU的百分比
+0.0% si — 软中断（Software Interrupts）占用CPU的百分比
+
+第四行：内存状态
+8306544k total — 物理内存总量（8GB）
+7775876k used — 使用中的内存总量（7.7GB）
+530668k free — 空闲内存总量（530M）
+79236k buffers — 缓存的内存量 （79M）
+
+第五行：swap交换分区
+2031608k total — 交换区总量（2GB）
+2556k used — 使用的交换区总量（2.5M）
+2029052k free — 空闲交换区总量（2GB）
+4231276k cached — 缓冲的交换区总量（4GB）
+
+第七行以下：各进程（任务）的状态监控
+PID — 进程id
+USER — 进程所有者
+PR — 进程优先级
+NI — nice值。负值表示高优先级，正值表示低优先级
+VIRT — 进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES
+RES — 进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA
+SHR — 共享内存大小，单位kb
+S — 进程状态。D=不可中断的睡眠状态 R=运行 S=睡眠 T=跟踪/停止 Z=僵尸进程
+%CPU — 上次更新到现在的CPU时间占用百分比
+%MEM — 进程使用的物理内存百分比
+TIME+ — 进程使用的CPU时间总计，单位1/100秒
+COMMAND — 进程名称（命令名/命令行）
+
+多U多核CPU监控
+在top基本视图中，按键盘数字“1”，可监控每个逻辑CPU的状况：

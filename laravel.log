@@ -1,0 +1,133 @@
+==========实用助手函数=================
+app_path()
+
+app_path 函数返回 app 目录的绝对路径， 你还可以使用 app_path 函数为相对于 app 目录的给定文件生成绝对路径：
+
+$path = app_path();
+$path = app_path('Http/Controllers/Controller.php');
+
+base_path()
+
+base_path 函数返回项目根目录的绝对路径， 你还可以使用 base_path 函数为相对于应用目录的给定文件生成绝对路径：
+
+$path = base_path();
+$path = base_path('vendor/bin');
+
+config_path()
+
+config_path 函数返回应用配置目录的绝对路径：
+
+$path = config_path();
+
+database_path()
+
+database_path 函数返回应用数据库目录的完整路径：
+
+$path = database_path();
+
+mix()
+
+mix 函数返回带有版本号的Mix文件路径：
+
+mix($file);
+
+public_path()
+
+public_path 函数返回 public 目录的绝对路径：
+
+$path = public_path();
+
+resource_path()
+
+resource_path 函数返回 resources 目录的绝对路径，还可以使用 resources 函数生成相对 resources 目录的文件的完整路径：
+
+$path = resource_path();
+
+$path = resource_path('assets/sass/app.scss');
+
+storage_path()
+
+storage_path 函数返回 storage 目录的绝对路径， 还可以使用 storage_path 函数生成相对于 storage 目录的给定文件的完整路径：
+
+$path = storage_path();
+
+$path = storage_path('app/file.txt');
+e()
+
+e 函数在给定字符串上运行 htmlentities：
+
+echo e('<html>foo</html>');
+
+// &lt;html&gt;foo&lt;/html&gt;
+
+action()
+
+action 函数为给定控制器动作生成URL，你不需要传递完整的命名空间到该控制器，传递相对于命名空间App\Http\Controllers 的类名即可：
+
+$url = action('HomeController@getIndex');
+
+如果该方法接收路由参数，你可以将其作为第二个参数传递进来：
+
+$url = action('UserController@profile', ['id' => 1]);
+cache()
+
+cache 函数可以用于从缓存中获取值，如果给定 key 在缓存中不存在，可选的默认值会被返回：
+
+$value = cache('key');
+
+$value = cache('key', 'default');
+
+你可以通过传递数组键值对到函数来添加数据项到缓存。还需要传递缓存有效期（分钟数）：
+
+cache(['key' => 'value'], 5);
+
+cache(['key' => 'value'], Carbon::now()->addSeconds(10));
+config()
+
+config 函数获取配置变量的值，配置值可以通过使用”.”号访问，包含文件名以及你想要访问的选项。如果配置选项不存在的话默认值将会被指定并返回：
+
+$value = config('app.timezone');
+
+$value = config('app.timezone', $default);
+
+辅助函数 config 还可以用于在运行时通过传递键值对数组设置配置变量值：
+
+config(['app.debug' => true]);
+info()
+
+info 函数会记录日志信息：
+
+info('Some helpful information!');
+
+还可以传递上下文数据数组到该函数：
+
+info('User login attempt failed.', ['id' => $user->id]);
+
+logger()
+
+logger 函数可以用于记录 debug 级别的日志消息：
+
+logger('Debug message');
+
+同样，也可以传递上下文数据数组到该函数：
+
+logger('User has logged in.', ['id' => $user->id]);
+
+如果没有值传入该函数的话会返回logger实例：
+
+logger()->error('You are not allowed here.');
+session()
+
+session 函数可以用于获取/设置 Session 值：
+
+$value = session('key');
+
+可以通过传递键值对数组到该函数的方式设置 Session 值：
+
+session(['chairs' => 7, 'instruments' => 3]);
+
+如果没有传入参数到 session 函数则返回 Session 存储器对象实例：
+
+$value = session()->get('key');
+
+session()->put('key', $value);
