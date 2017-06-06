@@ -67,3 +67,15 @@ $ git push origin dev
     建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
 
     从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+
+一、修改命令
+
+git remote set-url origin url
+二、先删后加
+
+git remote rm origin
+git remote add origin git@github.com:sheng/demo.git
+三、修改config文件
+
+如果你的项目有加入版本控制，那可以到项目根目录下，查看隐藏文件夹， 发现.git文件夹，找到其中的config文件，就可以修改其中的git remote origin地址了。

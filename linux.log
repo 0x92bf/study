@@ -22,7 +22,7 @@ find . -type f -size +100M
 显示文件大小:find . type f -size +50M -print0 | xargs -0 du -h
 
 改变文件权限:
-chomd 777 filename
+chmod 777 filename
 
 ==============composer================
 curl -sS https://getcomposer.org/installer | php
@@ -102,3 +102,5 @@ COMMAND — 进程名称（命令名/命令行）
 
 多U多核CPU监控
 在top基本视图中，按键盘数字“1”，可监控每个逻辑CPU的状况：
+
+==============tip====scandir默认被禁用======================
