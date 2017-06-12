@@ -1,0 +1,3 @@
+======cms框架返回json数据问题==========
+trim($res, "\xEF\xBB\xBF")
+chrome可看返回源码
