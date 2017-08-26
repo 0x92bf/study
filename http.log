@@ -64,7 +64,7 @@ content-type:application/x-www-form-urlencoded
 500   （服务器内部错误）  服务器遇到错误，无法完成请求。程序错误
 501   （尚未实施） 服务器不具备完成请求的功能。 例如，服务器无法识别请求方法时可能会返回此代码。
 502   （错误网关） 服务器作为网关或代理，从上游服务器收到无效响应。
-503   （服务不可用） 服务器目前无法使用（由于超载或停机维护）。 通常，这只是暂时状态。
+503   （服务不可用） 服务器目前无法使用（由于超载或停机维护）。 通常，这只是暂时状态。(服务器网络问题)
 504   （网关超时）  服务器作为网关或代理，但是没有及时从上游服务器收到请求。
 505   （HTTP 版本不受支持） 服务器不支持请求中所用的 HTTP 协议版本。
 ========================end==================================================
@@ -75,3 +75,4 @@ content-type:application/x-www-form-urlencoded
 服务端返回的 Access-Control-Allow-Origin: * 表明，该资源可以被任意外域访问。
 如果服务端仅允许来自 http://foo.example 的访问，该首部字段的内容如下：
 Access-Control-Allow-Origin: http://foo.example
+(extend:Access-Control-Allow-Methods: POST, GET, OPTIONS)
