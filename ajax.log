@@ -1,0 +1,23 @@
+ ============常用==================
+  $.ajax({
+            url: "doAddNode",
+            type: "POST",
+            dataType: "json",
+            data: {control:control,controlname:controlname,sort:sort},
+            success: function (info) {
+                if(info.code){
+                    layer.msg(info.msg,{
+                        icon: 1,
+                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                }else{
+                    layer.msg(info.msg,{
+                        icon: 2,
+                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        return;
+                    });
+                    return;
+                }
+            }});
+==============end====================
