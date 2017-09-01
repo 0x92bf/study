@@ -76,3 +76,12 @@ git remote add origin git@github.com:sheng/demo.git
 三、修改config文件
 
 如果你的项目有加入版本控制，那可以到项目根目录下，查看隐藏文件夹， 发现.git文件夹，找到其中的config文件，就可以修改其中的git remote origin地址了。
+
+=====查看分支=======
+git branch
+======end========
+
+=====删除分支=======
+git branch -d zhizun
+git branch -D zhizun (强制删除)
+=======end==========
