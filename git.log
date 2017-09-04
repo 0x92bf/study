@@ -1,20 +1,16 @@
 http://www.liaoxuefeng.com/wiki/
 
+========初始化仓库========
+git init
+=========end==============
 
-用git log可以查看提交历史，以便确定要回退到哪个版本。
+=========github=============
+1.创建ssh key:  $ ssh-keygen -t rsa -C "youremail@example.com"
 
-用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+2.登陆GitHub，打开“settings”，“SSH and GPG Keys”页面：
 
-git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令
-
-要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
-
-关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
-
-此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
-
-
-Git鼓励大量使用分支：
+3.关联远程仓:$ git remote add origin git@github.com:michaelliao/learngit.git
+=========end===============
 
 查看分支：git branch
 
@@ -28,42 +24,6 @@ Git鼓励大量使用分支：
 
 删除分支：git branch -d <name>
 
-
-推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
-
-$ git push origin master
-
-如果要推送其他分支，比如dev，就改成：
-
-$ git push origin dev
-
-
-因此，多人协作的工作模式通常是这样：
-
-    首先，可以试图用git push origin branch-name推送自己的修改；
-
-    如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
-
-    如果合并有冲突，则解决冲突，并在本地提交；
-
-    没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
-
-如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
-
-这就是多人协作的工作模式，一旦熟悉了，就非常简单。
-小结
-
-    查看远程库信息，使用git remote -v；
-
-    本地新建的分支如果不推送到远程，对其他人就是不可见的；
-
-    从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
-
-    在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
-
-    建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
-
-    从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
 
 一、修改命令
@@ -85,3 +45,4 @@ git branch
 git branch -d zhizun
 git branch -D zhizun (强制删除)
 =======end==========
+
