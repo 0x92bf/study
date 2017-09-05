@@ -1,0 +1,7 @@
+======解决项目被标记开发语言问题============
+1.创建文件.gitattributes
+2.内容:
+*.js linguist-language=php
+*.css linguist-language=php
+*.html linguist-language=php
+===============end=======================
