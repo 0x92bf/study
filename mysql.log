@@ -17,3 +17,13 @@ show profile for query nu;
 
 ============导入sql的命令行如下================
 source "路径名"+/mytest_emp_dept.sql
+
+==========低并发库存不足解决================
+//select 产生共享锁;update产生排他锁
+beginTranse(开启事务)
+try{
+    $dbca->query('update s_store set amount = amount - 1 where amount>=1 and postID = 12345');
+}catch($e Exception){
+    rollBack(回滚)
+}
+commit(提交事务)
