@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 15-1-15.
+ *  Created by Administrator on 15-1-15.
  */
 function checkCard(card)
 {
