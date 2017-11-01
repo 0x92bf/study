@@ -1,0 +1,96 @@
+字段类型 描述
+bit   0或1的整型数字
+int   从-2^31(-2,147,483,648)到2^31(2,147,483,647)的整型数字
+smallint   从-2^15(-32,768)到2^15(32,767)的整型数字
+tinyint   从0到255的整型数字
+
+decimal   从-10^38到10^38-1的定精度与有效位数的数字
+numeric   decimal的同义词
+
+money   从-2^63(-922,337,203,685,477.5808)到2^63-1(922,337,203,685,477.5807)的货币数据，最小货币单位千分之十
+smallmoney   从-214,748.3648到214,748.3647的货币数据，最小货币单位千分之十
+
+float   从-1.79E+308到1.79E+308可变精度的数字
+real   从-3.04E+38到3.04E+38可变精度的数字
+
+datetime   从1753年1月1日到9999年12日31的日期和时间数据，最小时间单位为百分之三秒或3.33毫秒
+smalldatetime   从1900年1月1日到2079年6月6日的日期和时间数据，最小时间单位为分钟
+
+timestamp   时间戳，一个数据库宽度的唯一数字
+uniqueidentifier   全球唯一标识符GUID
+
+char   定长非Unicode的字符型数据，最大长度为8000
+varchar   变长非Unicode的字符型数据，最大长度为8000
+text   变长非Unicode的字符型数据，最大长度为2^31-1(2G)
+
+nchar   定长Unicode的字符型数据，最大长度为8000
+nvarchar   变长Unicode的字符型数据，最大长度为8000
+ntext   变长Unicode的字符型数据，最大长度为2^31-1(2G)
+
+binary   定长二进制数据，最大长度为8000
+varbinary   变长二进制数据，最大长度为8000
+image   变长二进制数据，最大长度为2^31-1(2G)
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+Bit
+     1位，值为0或1
+     Int
+     Integer
+     4字节，值为-2^31~2^31-1
+     Smallint
+     2字节，值为-2^15~2^15-1
+     Tinyint
+     1字节，值为0~255
+     Decimal (p,s)
+     数字数据，固定精度为P，宽度为S
+     Numeric
+     Money
+     8字节，存放货币类型，值为-2^63~2^63-1
+     Small money
+     4字节，存放货币类型，值为-214748.3648~+214748.3647近似数值数据类型
+     Float (n)
+     N在1~24之间，4字节，7位精度
+     N=1~7为real
+     N在25~53之间，8字节，15位精度
+     =8~15为float
+Datetime
+     8字节，描述某天的日期和时刻，值的精确度为1/300秒
+     Smalldatetime
+     4字节，描述某天的日期和时刻，精度为分钟
+     Cursor
+     对游标的引用
+     Timestamp
+     8字节，存放在数据库内唯一的数据
+     Uniqueidentifier
+     16字节，存放全局唯一标识（GUID）
+     Char (n)
+     非unicode字符串的固定长度，n=1~8000
+     Character (n)
+Varchar (n)
+     可变长度，非unicode字符串n=1~8000
+     Char varying(n)
+Text
+     服务器代码页中可变长度非unicode数据。最大长度为231-1个字符
+     Nchar
+     固定长度unicode字符串n=1~4000
+     National character (n),
+     National char(n)
+Nvarchar
+     固定长度unicode字符串n=1~4000
+     National character varying(n)
+Ntext
+     可变长度unicode数据，最大长度为230-1个字符
+     National text
+Binary (n)
+     固定长度二进制数据，n在1~8000之间，存储空间为n+4字节
+     Varbinary (n)
+     可变长度二进制数据，n=1~8000
+     Binary varying (n)
+Tmage
+     可变长度二进制数据，大小为0~231-1
+     注意：
+     1） 对于数值型数据类型，宽度（scale）是指存储在小数点后的数字位数，而精度（precision）是指能存储的包含小数点在内的所有数字位数。
+     2） money和small money的存储宽度为4。
+     3） 时间戳列值在每一行更新时系统自动更新，时间戳列不能是关键字或关键字的一部分。
+     4） 唯一标识数据类型不能使用算术操作符（如+、-等），这种数据类型只能使用相等比较操作。Unicode是所有字符集的一致存储数据的标准。它要使用两倍于非Unicode数据存储的存储空间。
