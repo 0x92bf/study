@@ -1,0 +1,21 @@
+========环境搭建================
+1.安装nodejs
+2.npm install -g @angular/cli  ex:-g 代表全局安装
+3.ng -v ex:查看安装结果
+
+==========创建项目===========
+ng new projectname
+
+========目录分析=======
+package.json npm工具配置文件
+angular-cli.json  命令行配置文件
+karma 单元测试追踪器，自动化测试
+node_modules 第三方依赖文件
+
+src/assets 存放静态资源
+src/environments/environment.prod.ts 配置文件
+src/main.ts  脚本的入口点
+src/polyfills.ts 配置导入库文件
+
+=======编译项目=========
+ng build --base-href /admin/dist/  指定编译根目录
