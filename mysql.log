@@ -40,3 +40,38 @@ show status like 'innodb_row_lock%';
     Innodb_row_lock_time_avg：每次等待所花平均时间；
     Innodb_row_lock_time_max：从系统启动到现在等待最常的一次所花的时间；
     Innodb_row_lock_waits：系统启动后到现在总共等待的次数；
+
+=========分页查询两种方式===============
+SELECT  keyword  FROM  `keywords`  WHERE  id='59' ORDER BY   keyword  LIMIT 2  OFFSET 1;
+比如这个SQL ，这里表示的是从第一条数据（不包括第一条）开始读取2条数据。
+----------------------------------------------------------------------------------------------------------
+SELECT  keyword  FROM  `keywords`  WHERE  id='59' ORDER BY   keyword  LIMIT 2 ,1;
+比如这个SQL ，这里表示的是从第2条数据（不包括第2条）开始读取1条数据。
+
+==========字符串函数===================
+CONCAT(column|str1, column|str2,...)：将多个字符串参数首尾相连后返回
+
+
+=========查询表空间大小============
+use information_schema;
+ select concat(round(sum(data_length/1024/1024),2),'MB') as data_length_MB,
+ concat(round(sum(index_length/1024/1024),2),'MB') as index_length_MB
+ from tables where
+ table_schema='databasename'
+ and table_name = 'tablename';
+
+ =========模糊查询语句======5.5版本===(28w数据)==========
+ LIKE语句
+ select * from test where path like '%1%';  (0.1s)
+
+ LOCATE语句
+select * from test where locate('1',path)>0; (0.10s)
+
+ POSITION语句
+select * from test where position('1' in path); (0.1s)
+
+ INSTR语句
+select * from test where instr(path,'1')>0; (0.10s)
+
+ FIND_IN_SET语句
+ mysql> select * from test where find_in_set('1',path);[name内值需用,分割](0.0980s)
