@@ -1,2 +1,0 @@
-地理空间索引:
-self.client.db.table.ensure_index(['loc',pymongo.GEO2D])
